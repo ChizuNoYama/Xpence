@@ -10,7 +10,5 @@ public class Expense
     public string? ExpenseName { get; set;}
     public double Amount { get; set;}
     public DateTime TimeStamp { get; set; }
-    
-    [ForegnK]
     public ExpenseCategory Category { get; set; }
 }
