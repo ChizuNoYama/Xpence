@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<core:BaseContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:core="clr-namespace:Xpence.Core"
+             xmlns:components="clr-namespace:Xpence.Components"
+             x:Name="contentView"
+             x:Class="Xpence.Components.WeeklyExpenseView">
+    
+    <Border
+        x:DataType="components:WeeklyExpenseView"
+        BindingContext="{x:Reference contentView}"
+        Padding="16"
+        BackgroundColor="White"
+        StrokeThickness="0"
+        StrokeShape="RoundRectangle 16">
+        <Grid
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="*,*">
+            <Label 
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Weekly Expense"
+                Style="{StaticResource H1}"/>
+            <!-- TODO: Bind to date range -->
+            <Label 
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="From 1 - 6 Apr, 2024"
+                Style="{StaticResource DetailText}"/>
+            <!-- TODO: Make the categories dynamically added to the grid. Maybe using a FlexLayout instead -->
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Grocery"
+                TextColor="#7C5DD7"/>
+            <Label Text="{Binding DisplayGroceryTotalAmount}"/>
+            
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="Eating Out"
+                TextColor="#29B072"/>
+            <Label Text="{Binding DisplayEatingOutTotalAmount}"/>
+            
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Shopping"
+                TextColor="#D45361"/>
+            <Label Text="{Binding DisplayShoppingTotalAmount}"/>
+            
+            <Label
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="Transportation"
+                TextColor="#F19830"/>
+            <Label Text="{Binding DisplayTransportationTotalAmount}"/>
+            
+        </Grid>
+    </Border>
+    
+</core:BaseContentView>

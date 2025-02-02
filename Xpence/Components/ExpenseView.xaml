@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<core:BaseContentView 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:Xpence.Core"
+    xmlns:components="clr-namespace:Xpence.Components"
+    x:Name="contentView"
+    x:Class="Xpence.Components.ExpenseView">
+    <Border
+        x:DataType="components:ExpenseView"
+        BindingContext="{Binding Source={x:Reference contentView}}"
+        HeightRequest="65"
+        BackgroundColor="White"
+        StrokeThickness="0"
+        StrokeShape="RoundRectangle 16">
+        
+        <Grid
+            RowDefinitions="*,*"
+            ColumnSpacing="16"
+            ColumnDefinitions="30,*,Auto"
+            Padding="8">
+            
+            <Image
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Source="{Binding Source}"
+                HeightRequest="30"
+                WidthRequest="30"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
+        
+            <Label 
+                Text="{Binding ExpenseName}"
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource H2}"/>
+            
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding FormattedDate}"
+                FontSize="12"
+                TextColor="#A4A4A4"/>
+            
+            <Label
+                Text="{Binding DisplayAmount}"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                HorizontalOptions="End"/>
+        </Grid>
+    </Border>
+</core:BaseContentView>

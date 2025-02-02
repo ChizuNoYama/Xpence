@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<core:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:components="clr-namespace:Xpence.Components"
+             xmlns:vm="clr-namespace:Xpence.ViewModels.Page"
+             xmlns:core="clr-namespace:Xpence.Core"
+             xmlns:models="clr-namespace:Xpence.Models"
+             BackgroundColor="#E9EDF5"
+             x:DataType="vm:MainPageViewModel"
+             x:Class="Xpence.MainPage">
+    
+    <VerticalStackLayout
+        Spacing="24">
+        
+        <components:WeeklyExpenseView />
+        
+        <CollectionView
+            Margin="30,16"
+            ItemsSource="{Binding Expenses}"
+            ItemSizingStrategy="MeasureFirstItem">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Expense">
+                    <Grid>
+                        <components:ExpenseView
+                            ExpenseName="{Binding ExpenseName}"
+                            Timestamp="{Binding TimeStamp}"
+                            Amount="{Binding Amount}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+    
+    
+</core:BaseContentPage>
