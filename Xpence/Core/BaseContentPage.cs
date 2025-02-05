@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Xpence.ViewModels;
 
 namespace Xpence.Core;
@@ -11,10 +12,23 @@ public class BaseContentPage : ContentPage
         this.ViewModel.Initialize();
     }
 
-    private BaseViewModel _viewModel = null!;
+    private readonly BaseViewModel _viewModel = null!;
     public BaseViewModel ViewModel
     {
         get => _viewModel;
         init => _viewModel = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    protected override async void OnAppearing()
+    {
+        try
+        {
+            base.OnAppearing();
+            await this.ViewModel.InitializeAsync();
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
     }
 }

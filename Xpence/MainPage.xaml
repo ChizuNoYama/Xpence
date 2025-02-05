@@ -8,28 +8,40 @@
              BackgroundColor="#E9EDF5"
              x:DataType="vm:MainPageViewModel"
              x:Class="Xpence.MainPage">
-    
-    <VerticalStackLayout
-        Spacing="24">
+    <Grid>
         
-        <components:WeeklyExpenseView />
+        <VerticalStackLayout
+            Spacing="24">
+            
+            <components:WeeklyExpenseView />
+            
+            <CollectionView
+                Margin="30,16"
+                ItemsSource="{Binding Expenses}"
+                ItemSizingStrategy="MeasureFirstItem">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Expense">
+                        <Grid>
+                            <components:ExpenseView
+                                ExpenseName="{Binding ExpenseName}"
+                                Timestamp="{Binding TimeStamp}"
+                                Amount="{Binding Amount}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
         
-        <CollectionView
-            Margin="30,16"
-            ItemsSource="{Binding Expenses}"
-            ItemSizingStrategy="MeasureFirstItem">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Expense">
-                    <Grid>
-                        <components:ExpenseView
-                            ExpenseName="{Binding ExpenseName}"
-                            Timestamp="{Binding TimeStamp}"
-                            Amount="{Binding Amount}"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
-    
-    
+        <Ellipse
+            Fill="Green"
+            Margin="0,0,16,16"
+            WidthRequest="24"
+            HeightRequest="24"
+            VerticalOptions="End"
+            HorizontalOptions="End">
+            <Ellipse.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ShowAddExpenseModalCommand}"/>
+            </Ellipse.GestureRecognizers>
+        </Ellipse>
+    </Grid>
 </core:BaseContentPage>

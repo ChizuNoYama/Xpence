@@ -1,13 +1,11 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Xpence.Core;
-using Xpence.Services.Interfaces;
 
 namespace Xpence.ViewModels;
 
-public abstract class BaseViewModel(INavigationService navigationService) : BaseObject
+public abstract class BaseViewModel(IServiceProvider serviceProvider) : BaseObject
 {
-    protected INavigationService NavigationService { get; } = navigationService;
+    protected IServiceProvider ServiceProvider { get; } = serviceProvider;
+    //protected INavigationService NavigationService => ServiceProvider.GetService<INavigationService>()!;
     public virtual void Initialize(){}
     public virtual Task InitializeAsync() => Task.CompletedTask;
 }

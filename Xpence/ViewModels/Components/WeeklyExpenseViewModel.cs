@@ -1,8 +1,6 @@
-using Xpence.Services.Interfaces;
-
 namespace Xpence.ViewModels.Components;
 
-public class WeeklyExpenseViewModel(INavigationService navigationService) : BaseViewModel(navigationService)
+public class WeeklyExpenseViewModel(IServiceProvider serviceProvider) : BaseViewModel(serviceProvider)
 {
     
 }

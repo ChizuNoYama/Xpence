@@ -10,5 +10,5 @@ public class Expense
     public string? ExpenseName { get; set;}
     public double Amount { get; set;}
     public DateTime TimeStamp { get; set; }
-    public ExpenseCategory Category { get; set; }
+    public uint? ExpenseCategoryId { get; set; }
 }

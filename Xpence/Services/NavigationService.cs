@@ -1,4 +1,5 @@
-using Xpence.Services.Interfaces;
+using Xpence.Core;
+using Xpence.Services;
 
 namespace Xpence.Services;
 
@@ -11,6 +12,16 @@ public class NavigationService : INavigationService
             return Shell.Current.GoToAsync(route);
         }
         return Shell.Current.GoToAsync(route, parameters);
+    }
+
+    public Task NavigateModalAsync(BaseContentPage page, IDictionary<string, object>? parameters = null)
+    {
+        return Shell.Current.Navigation.PushModalAsync(page);
+    }
+
+    public Task CloseModalAsync()
+    {
+        return Shell.Current.Navigation.PopModalAsync();
     }
 
     public Task PopAsync()
