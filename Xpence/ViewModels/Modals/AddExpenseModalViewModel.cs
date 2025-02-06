@@ -37,7 +37,7 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
     }
 
     [RelayCommand]
-    public async Task CloseModal()
+    public async Task CloseModalAsync()
     {
         await this.ServiceProvider.GetService<INavigationService>()!.CloseModalAsync();
     }
