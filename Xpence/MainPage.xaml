@@ -11,7 +11,7 @@
     <Grid>
         
         <VerticalStackLayout
-            Spacing="24">
+            Spacing="8">
             
             <components:WeeklyExpenseView />
             
@@ -21,11 +21,13 @@
                 ItemSizingStrategy="MeasureFirstItem">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Expense">
-                        <Grid>
+                        <Grid
+                            Margin="0,16,0,0">
                             <components:ExpenseView
                                 ExpenseName="{Binding ExpenseName}"
                                 Timestamp="{Binding TimeStamp}"
-                                Amount="{Binding Amount}"/>
+                                Amount="{Binding Amount}"
+                                ExpenseCategoryName="{Binding ExpenseCategoryName}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

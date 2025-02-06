@@ -23,6 +23,13 @@ public partial class ExpenseView
         set => SetValue(SourceProperty, value);
     }
     
+    public static BindableProperty ExpenseCategoryNameProperty = BindableProperty.Create(nameof(ExpenseCategoryName), typeof(string), typeof(ExpenseView));
+    public string ExpenseCategoryName
+    {
+        get => (string)GetValue(ExpenseCategoryNameProperty);
+        set => SetValue(ExpenseCategoryNameProperty, value);
+    }
+    
     public static BindableProperty TimestampProperty = BindableProperty.Create(nameof(Timestamp), typeof(DateTime), typeof(ExpenseView));
     public DateTime Timestamp
     {

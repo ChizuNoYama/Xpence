@@ -21,13 +21,16 @@ public partial class MainPageViewModel(IServiceProvider serviceProvider) : BaseV
     {
         IDatabaseRepo db = this.ServiceProvider.GetService<IDatabaseRepo>()!;
         List<Expense> tempList = await db.GetExpensesAsync();
+        //TODO: Check performance of this
+        foreach (Expense expense in tempList)
+        {
+           ExpenseCategory Category =  await db.GetExpenseCategoryByIdAsync(expense.ExpenseCategoryId);
+           expense.ExpenseCategoryName = Category.Name;
+           expense.ExpenseCategoryId = Category.Id;
+        }
+        
         this.Expenses = new(tempList);
 
-        //TODO: Check performance of this
-        foreach (Expense expense in this.Expenses)
-        {
-            await db.GetExpenseCategoryByIdAsync(expense.ExpenseCategoryId);
-        }
     }
     
     [RelayCommand]
