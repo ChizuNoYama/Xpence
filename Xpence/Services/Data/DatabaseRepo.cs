@@ -16,11 +16,12 @@ public class DatabaseRepo : IDatabaseRepo
             _database.CreateTableAsync<Expense>(),
             _database.CreateTableAsync<ExpenseCategory>()
         );
-        
+
+        List<ExpenseCategory> categories =  await _database.Table<ExpenseCategory>().ToListAsync();
+        if (categories.Count > 0) return;
         // Insert the first category "Uncategorized" if the user does not want to order their expense in a category
-       await  _database.InsertAsync(new ExpenseCategory
+       int rowNum = await  _database.InsertAsync(new ExpenseCategory
        {
-           Id = 0, 
            Name = "Uncategorized"
        });
     }
