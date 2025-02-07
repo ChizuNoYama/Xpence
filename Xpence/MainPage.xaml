@@ -9,20 +9,20 @@
              x:DataType="vm:MainPageViewModel"
              x:Class="Xpence.MainPage">
     <Grid>
-        
-        <VerticalStackLayout
-            Spacing="8">
-            
-            <components:WeeklyExpenseView />
-            
+        <Grid 
+            RowDefinitions="Auto,*"
+            RowSpacing="8">
+            <components:WeeklyExpenseView 
+                Grid.Row="0"/>
             <CollectionView
+                Grid.Row="1"
                 Margin="30,16"
                 ItemsSource="{Binding Expenses}"
-                ItemSizingStrategy="MeasureFirstItem">
+                VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Expense">
                         <Grid
-                            Margin="0,16,0,0">
+                            Padding="0,0,0,16">
                             <components:ExpenseView
                                 ExpenseName="{Binding ExpenseName}"
                                 Timestamp="{Binding TimeStamp}"
@@ -32,7 +32,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </VerticalStackLayout>
+        </Grid>
         
         <Ellipse
             Fill="Green"
