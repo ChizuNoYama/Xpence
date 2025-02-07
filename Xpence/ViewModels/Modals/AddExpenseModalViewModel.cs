@@ -14,6 +14,29 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         set => SetProperty(ref _expenseCategories, value);
     }
 
+    private double _amount;
+    public double Amount
+    {
+        get => _amount; 
+        set => SetProperty(ref _amount, value); 
+    }
+
+    private string _expenseName;
+    public string ExpenseName
+    {
+        get => _expenseName;
+        set => SetProperty(ref _expenseName, value);
+    }
+
+    public override async Task InitializeAsync()
+    {
+        await base.InitializeAsync();
+        
+        IDatabaseRepo db = this.ServiceProvider.GetRequiredService<IDatabaseRepo>();
+        List<ExpenseCategory> temp = await db.GetExpenseCategoriesAsync();
+        this.ExpenseCategories = temp;
+    }
+
     [RelayCommand]
     public async Task AddExpenseAsync()
     {
@@ -27,9 +50,9 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         Expense expense = new()
         {
             Id = Guid.NewGuid(),
-            Amount = 11.99,
+            Amount = this.Amount,
             TimeStamp = DateTime.Now,
-            ExpenseName = "Spotify Subscription",
+            ExpenseName = this.ExpenseName,
             ExpenseCategoryId = category.Id ?? 0
         };
         
