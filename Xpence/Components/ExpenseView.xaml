@@ -10,23 +10,25 @@
     <Border
         x:DataType="components:ExpenseView"
         BindingContext="{Binding Source={x:Reference contentView}}"
-        HeightRequest="70"
         BackgroundColor="White"
         StrokeThickness="0"
         StrokeShape="RoundRectangle 16">
         
         <Grid
-            RowDefinitions="*,*,*"
+            RowDefinitions="Auto,Auto,Auto"
             ColumnSpacing="16"
             ColumnDefinitions="30,*,Auto"
             Padding="8">
             
             <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
                 Text="{Binding ExpenseCategoryName}"/>
             
             <Image
-                Grid.Row="1"
-                Grid.RowSpan="2"
+                Grid.Row="0"
+                Grid.RowSpan="3"
                 Grid.Column="0"
                 Source="{Binding Source}"
                 HeightRequest="30"
