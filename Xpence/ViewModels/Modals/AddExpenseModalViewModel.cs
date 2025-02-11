@@ -21,7 +21,7 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         set => SetProperty(ref _amount, value); 
     }
 
-    private string _expenseName;
+    private string _expenseName = "";
     public string ExpenseName
     {
         get => _expenseName;
@@ -40,7 +40,7 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
     [RelayCommand]
     public async Task AddExpenseAsync()
     {
-        //TODO: Testing inserting Category
+        //TODO: Get the chosen category from the UI 
         ExpenseCategory category = new()
         {
             Id = 1,

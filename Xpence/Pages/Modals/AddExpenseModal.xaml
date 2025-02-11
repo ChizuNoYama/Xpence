@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:core="clr-namespace:Xpence.Core"
              xmlns:vm="clr-namespace:Xpence.ViewModels.Modals"
+             xmlns:models="clr-namespace:Xpence.Models"
              BackgroundColor="#35000000"
              x:DataType="vm:AddExpenseModalViewModel"
              x:Class="Xpence.Pages.Modals.AddExpenseModal">
@@ -30,7 +31,7 @@
                     
                     <Picker 
                         ItemsSource="{Binding ExpenseCategories}"
-                        ItemDisplayBinding="{Binding Name}"/>
+                        ItemDisplayBinding="{Binding Name, x:DataType=models:ExpenseCategory}"/>
                     
                     <Label
                         Text="Name of expense"/>
