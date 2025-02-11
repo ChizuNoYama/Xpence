@@ -3,13 +3,12 @@
 <core:BaseContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:core="clr-namespace:Xpence.Core"
-             xmlns:components="clr-namespace:Xpence.Components"
+             xmlns:vm="clr-namespace:Xpence.ViewModels.Components"
              x:Name="contentView"
              x:Class="Xpence.Components.WeeklyExpenseView">
     
     <Border
-        x:DataType="components:WeeklyExpenseView"
-        BindingContext="{x:Reference contentView}"
+        x:DataType="vm:WeeklyExpenseViewModel"
         Padding="16"
         BackgroundColor="White"
         StrokeThickness="0"
@@ -56,7 +55,6 @@
                 Text="Transportation"
                 TextColor="#F19830"/>
             <Label Text="{Binding DisplayTransportationTotalAmount}"/>
-            
         </Grid>
     </Border>
     
