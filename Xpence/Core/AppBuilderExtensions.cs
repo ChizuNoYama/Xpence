@@ -1,7 +1,8 @@
-using CommunityToolkit.Maui;
+using Xpence.Components;
 using Xpence.Pages.Modals;
 using Xpence.Services;
 using Xpence.Services.Data;
+using Xpence.ViewModels.Components;
 using Xpence.ViewModels.Modals;
 using Xpence.ViewModels.Page;
 
@@ -13,8 +14,7 @@ public static class AppBuilderExtensions
     {
         builder.Services.AddTransient<MainPageViewModel>();
         builder.Services.AddTransient<AddExpenseModalViewModel>();
-        // builder.Services.AddTransient<WeeklyExpenseViewModel>();
-        // builder.Services.AddTransient<WeeklyExpense>
+        builder.Services.AddTransient<WeeklyExpenseViewModel>();
         return builder;
     }
 
@@ -22,6 +22,13 @@ public static class AppBuilderExtensions
     {
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<AddExpenseModal>();
+        return builder;
+    }
+
+    public static MauiAppBuilder RegisterComponents(this MauiAppBuilder builder)
+    {
+        builder.Services.AddTransient<WeeklyExpenseView>();
+            
         return builder;
     }
     
