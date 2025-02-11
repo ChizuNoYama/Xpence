@@ -19,8 +19,9 @@ public class DatabaseRepo : IDatabaseRepo
 
         List<ExpenseCategory> categories =  await _database.Table<ExpenseCategory>().ToListAsync();
         if (categories.Count > 0) return;
+        
         // Insert the first category "Uncategorized" if the user does not want to order their expense in a category
-       int rowNum = await  _database.InsertAsync(new ExpenseCategory
+       await  _database.InsertAsync(new ExpenseCategory
        {
            Name = "Uncategorized"
        });
