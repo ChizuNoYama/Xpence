@@ -15,7 +15,6 @@ public class IconButton : GraphicsView
     }
 
     public static BindableProperty CanvasForegroundColorProperty = BindableProperty.Create(nameof(CanvasForegroundColor), typeof(Color), typeof(IconButton));
-
     public Color CanvasForegroundColor
     {
         get => (Color)GetValue(CanvasForegroundColorProperty);
