@@ -14,7 +14,6 @@ public static class AppBuilderExtensions
     {
         builder.Services.AddTransient<MainPageViewModel>();
         builder.Services.AddTransient<AddExpenseModalViewModel>();
-        builder.Services.AddTransient<WeeklyExpenseViewModel>();
         return builder;
     }
 
