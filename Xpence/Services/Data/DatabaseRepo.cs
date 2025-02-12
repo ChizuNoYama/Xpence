@@ -23,7 +23,7 @@ public class DatabaseRepo : IDatabaseRepo
         // Insert the first category "Uncategorized" if the user does not want to order their expense in a category
        await  _database.InsertAsync(new ExpenseCategory
        {
-           Name = "Uncategorized"
+           Name = Constants.DEFAULT_CATEGORY_NAME
        });
     }
 

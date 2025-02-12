@@ -11,12 +11,13 @@
     <Grid>
         <Grid 
             RowDefinitions="Auto,*"
-            RowSpacing="8">
+            RowSpacing="8"
+            Padding="16">
             <components:WeeklyExpenseView 
                 Grid.Row="0"/>
             <CollectionView
                 Grid.Row="1"
-                Margin="30,16"
+                Margin="14,16"
                 ItemsSource="{Binding Expenses}"
                 VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemTemplate>

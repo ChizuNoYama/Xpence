@@ -14,9 +14,9 @@ public class NavigationService : INavigationService
         return Shell.Current.GoToAsync(route, parameters);
     }
 
-    public Task NavigateModalAsync(BaseContentPage page, IDictionary<string, object>? parameters = null)
+    public Task NavigateModalAsync(BaseContentPage page, bool animated = false, IDictionary<string, object>? parameters = null)
     {
-        return Shell.Current.Navigation.PushModalAsync(page);
+        return Shell.Current.Navigation.PushModalAsync(page, animated);
     }
 
     public Task CloseModalAsync()

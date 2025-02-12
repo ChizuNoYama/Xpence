@@ -36,6 +36,7 @@ public static class AppBuilderExtensions
     {
         builder.Services.AddSingleton<INavigationService, NavigationService>();
         builder.Services.AddSingleton<IDatabaseRepo, DatabaseRepo>();
+        builder.Services.AddSingleton<IWeeklyExpenseService, WeeklyExpenseService>();
         return builder;
     }
 }
