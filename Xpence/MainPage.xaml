@@ -34,16 +34,16 @@
             </CollectionView>
         </Grid>
         
-        <Ellipse
-            Fill="Green"
-            Margin="0,0,16,16"
-            WidthRequest="24"
-            HeightRequest="24"
+        <components:IconButton
+            HorizontalOptions="End"
             VerticalOptions="End"
-            HorizontalOptions="End">
-            <Ellipse.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding ShowAddExpenseModalCommand}"/>
-            </Ellipse.GestureRecognizers>
-        </Ellipse>
+            Margin="0,0,16,16"
+            HeightRequest="48"
+            WidthRequest="48"
+            CanvasForegroundColor="#e9e9f6"
+            CanvasBackgroundColor="#5ae267"
+            CanvasPadding="8"
+            CanvasIconThickness="4"
+            OnTapCommand="{Binding ShowAddExpenseModalCommand}"/>
     </Grid>
 </core:BaseContentPage>
