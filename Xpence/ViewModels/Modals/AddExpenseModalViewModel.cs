@@ -57,6 +57,7 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         };
         
         await this.ServiceProvider.GetService<IDatabaseRepo>()!.InsertExpenseAsync(expense);
+        await this.CloseModalAsync();
     }
 
     [RelayCommand]
