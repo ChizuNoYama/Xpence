@@ -21,9 +21,18 @@ public class DatabaseRepo : IDatabaseRepo
         if (categories.Count > 0) return;
         
         // Insert the first category "Uncategorized" if the user does not want to order their expense in a category
-       await  _database.InsertAsync(new ExpenseCategory
+       // await  _database.InsertAsync(new ExpenseCategory
+       // {
+       //     Name = Constants.DEFAULT_CATEGORY_NAME
+       // });
+       
+       //TODO: Think about adding other prexisting Categories.
+       await _database.InsertAllAsync(new List<ExpenseCategory>
        {
-           Name = Constants.DEFAULT_CATEGORY_NAME
+            new (){ Name = Constants.DEFAULT_CATEGORY_NAME },
+            new (){ Name = "Food" },
+            new (){ Name = "Entertainment" },
+            new (){ Name = "Transportation" }
        });
     }
 
@@ -49,22 +58,12 @@ public class DatabaseRepo : IDatabaseRepo
     #endregion Expenses
 
     #region Expense Categories
-    public async Task<ExpenseCategory> GetExpenseCategoryAsync(ExpenseCategory expenseCategory)
-    {
-        await this.CreateDatabaseAsync();
-        if (expenseCategory.Id == null)
-        {
-            return await this.GetExpenseCategoryByIdAsync(expenseCategory.Id);
-        }
-        return await this.GetExpenseCategoryByNameAsync(expenseCategory.Name);
-    }
     
     public async Task<ExpenseCategory> GetExpenseCategoryByIdAsync(uint? expenseCategoryId)
     {
         await this.CreateDatabaseAsync();
 
         uint? id = expenseCategoryId ?? 0;
-        // If the expenseCategoryId is null, get the "Uncategorized" category 
         return await _database!.Table<ExpenseCategory>().Where(e => e.Id == id).FirstOrDefaultAsync();
     }
     

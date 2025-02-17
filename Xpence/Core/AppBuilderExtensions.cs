@@ -1,8 +1,8 @@
+using System.ComponentModel;
 using Xpence.Components;
 using Xpence.Pages.Modals;
 using Xpence.Services;
 using Xpence.Services.Data;
-using Xpence.ViewModels.Components;
 using Xpence.ViewModels.Modals;
 using Xpence.ViewModels.Page;
 

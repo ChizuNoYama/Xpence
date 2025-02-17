@@ -30,12 +30,14 @@
             <!-- TODO: Testing Flex Layout for categories-->
             <FlexLayout
                 Grid.Row="2"
-                Basis="50%"
+                Grow="1.0"
+                Wrap="Wrap"
                 BindableLayout.ItemsSource="{Binding CategoryAmounts}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:CategoryTotalAmount">
                         <Grid
-                            RowDefinitions="30,30">
+                            RowDefinitions="30,30"
+                            ColumnDefinitions="*">
                             <Label
                                 Grid.Row="0"
                                 Text="{Binding ExpenseCategoryName}"/>

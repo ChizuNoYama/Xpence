@@ -21,7 +21,7 @@ public static class MauiProgram
             .RegisterServices()
             .RegisterViewModels()
             .RegisterPages();
-
+        
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

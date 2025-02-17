@@ -35,12 +35,13 @@
                     
                     <Label
                         Text="Name of expense"/>
-                    <Entry Text="{Binding ExpenseName}"/>
-                    
+                    <Entry 
+                        Text="{Binding ExpenseName}"/>
                     <Label 
                         Text="Amount"/>
                     <Entry 
-                        Text="{Binding Amount}"/>
+                        Text="{Binding Amount}"
+                        Placeholder="0"/>
                     <Button 
                         Text="Add"
                         HeightRequest="16" 

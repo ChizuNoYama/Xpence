@@ -7,7 +7,18 @@ public class WeeklyExpenseService(IServiceProvider _serviceProvider) : IWeeklyEx
     public async Task<List<CategoryTotalAmount>> GetCategoryAmounts(List<Expense>? existingExpenses = null)
     {
         List<CategoryTotalAmount> amountsByCategory = new();
-        List<Expense> expenses = existingExpenses ?? await _serviceProvider.GetService<IDatabaseRepo>()?.GetExpensesAsync()!;
+        IDatabaseRepo db = _serviceProvider.GetService<IDatabaseRepo>()!;
+        List<Expense> expenses = existingExpenses ?? await db.GetExpensesAsync();
+
+        if (expenses.Count == 0)
+        {
+            List<ExpenseCategory> expenseCategories = await db.GetExpenseCategoriesAsync();
+            foreach (ExpenseCategory expenseCategory in expenseCategories)
+            {
+                amountsByCategory.Add(new CategoryTotalAmount{ ExpenseCategoryName = expenseCategory.Name, TotalAmount = 0});
+            }
+            return amountsByCategory;
+        }
         
         foreach (var expense in expenses)
         {
@@ -16,18 +27,13 @@ public class WeeklyExpenseService(IServiceProvider _serviceProvider) : IWeeklyEx
             CategoryTotalAmount? foundAmount = amountsByCategory.Find(c => c.ExpenseCategoryName == expense.ExpenseCategoryName);
             if (foundAmount == null)
             {
-                amountsByCategory.Add(new CategoryTotalAmount()
-                {
-                    ExpenseCategoryName = expense.ExpenseCategoryName,
-                    TotalAmount = expense.Amount
-                });
+                amountsByCategory.Add(new CategoryTotalAmount { ExpenseCategoryName = expense.ExpenseCategoryName, TotalAmount = expense.Amount });
             }
             else
             {
                 foundAmount.TotalAmount += expense.Amount;
             }
         }
-
         return amountsByCategory;
     }
 }

@@ -27,7 +27,14 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         get => _expenseName;
         set => SetProperty(ref _expenseName, value);
     }
-
+    
+    private ExpenseCategory _selectedExpenseCategory = new();
+    public ExpenseCategory SelectedExpenseCategory
+    {
+        get => _selectedExpenseCategory;
+        set => SetProperty(ref _selectedExpenseCategory, value);
+    }
+    
     public override async Task InitializeAsync()
     {
         await base.InitializeAsync();
@@ -41,11 +48,6 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
     public async Task AddExpenseAsync()
     {
         //TODO: Get the chosen category from the UI 
-        ExpenseCategory category = new()
-        {
-            Id = 1,
-            Name = "Food"
-        };
         
         Expense expense = new()
         {
@@ -53,7 +55,7 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
             Amount = this.Amount,
             TimeStamp = DateTime.Now,
             ExpenseName = this.ExpenseName,
-            ExpenseCategoryId = category.Id ?? 0
+            ExpenseCategoryId = this.SelectedExpenseCategory.Id
         };
         
         await this.ServiceProvider.GetService<IDatabaseRepo>()!.InsertExpenseAsync(expense);

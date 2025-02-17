@@ -8,7 +8,6 @@ public interface IDatabaseRepo
     Task<List<Expense>> GetExpensesAsync();
     Task<int> InsertExpenseAsync(Expense expense);
     Task<int> UpdateExpenseAsync(Expense expense);
-    Task<ExpenseCategory> GetExpenseCategoryAsync(ExpenseCategory expenseCategory);
     Task<ExpenseCategory> GetExpenseCategoryByIdAsync(uint? expenseCategoryId);
     Task<ExpenseCategory> GetExpenseCategoryByNameAsync(string expenseCategoryName);
     Task<List<ExpenseCategory>> GetExpenseCategoriesAsync();
