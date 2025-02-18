@@ -31,7 +31,8 @@
                     
                     <Picker 
                         ItemsSource="{Binding ExpenseCategories}"
-                        ItemDisplayBinding="{Binding Name, x:DataType=models:ExpenseCategory}"/>
+                        ItemDisplayBinding="{Binding Name, x:DataType=models:ExpenseCategory}"
+                        SelectedItem="{Binding SelectedExpenseCategory}"/>
                     
                     <Label
                         Text="Name of expense"/>
@@ -41,6 +42,7 @@
                         Text="Amount"/>
                     <Entry 
                         Text="{Binding Amount}"
+                        Keyboard="Numeric"
                         Placeholder="0"/>
                     <Button 
                         Text="Add"

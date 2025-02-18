@@ -14,8 +14,8 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         set => SetProperty(ref _expenseCategories, value);
     }
 
-    private double _amount;
-    public double Amount
+    private double? _amount;
+    public double? Amount
     {
         get => _amount; 
         set => SetProperty(ref _amount, value); 
@@ -52,7 +52,7 @@ public partial class AddExpenseModalViewModel(IServiceProvider serviceProvider) 
         Expense expense = new()
         {
             Id = Guid.NewGuid(),
-            Amount = this.Amount,
+            Amount = this.Amount ?? 0,
             TimeStamp = DateTime.Now,
             ExpenseName = this.ExpenseName,
             ExpenseCategoryId = this.SelectedExpenseCategory.Id
