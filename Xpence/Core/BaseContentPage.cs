@@ -28,7 +28,7 @@ public class BaseContentPage : ContentPage
         }
         catch (Exception ex)
         {
-            throw ex;
+            Debug.WriteLine(ex.Message);
         }
     }
 }
